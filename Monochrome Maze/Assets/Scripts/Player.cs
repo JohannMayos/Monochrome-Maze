@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     public float JumpForce;
     public bool isJumping;
     public Transform Weapon;
+    public int maxHealth = 500;
+    public int currentHealth;
+    public HealthBar healthbar;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     
@@ -39,11 +42,11 @@ public class Player : MonoBehaviour
         }
 
         if(col.gameObject.tag == "Enemy"){
-            GameController.instance.ShowGameOver();
-            Destroy(gameObject);
+            TakeDamage(100);
         }
 
         if(col.gameObject.tag == "Traps"){
+            TakeDamage(500);
             GameController.instance.ShowGameOver();
             Destroy(gameObject);
         }
@@ -63,17 +66,32 @@ public class Player : MonoBehaviour
     
     }
 
-     void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.tag == "Enemy")
         {
-        
-            GameController.instance.ShowGameOver();
-            Destroy(col.gameObject);
-            Destroy(this.gameObject);
+            
+            TakeDamage(100);
             
         }
     }
+
+    void TakeDamage(int damage){
+        currentHealth -= damage;
+
+        healthbar.SetHealth(currentHealth);
+
+        if(currentHealth <= 0){
+            Die();
+        }
+    }
+
+    void Die(){
+        GameController.instance.ShowGameOver();
+        Destroy(gameObject);
+    }
+
+
 
 
     void Move(){
