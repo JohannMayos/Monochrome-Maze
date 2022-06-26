@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
    
     void Start(){
         currentHealth = maxHealth;
+        healthbar.SetMaxHealth(maxHealth);
         anim = GetComponent<Animator>();
         rig = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -158,8 +159,8 @@ public class Player : MonoBehaviour
             foreach (Collider2D enemy in hitEnemies)
             {
                 enemy.GetComponent<Boss>().TakeDamage(100);
-                
             }
+
     }
 
     void OnDrawGizmosSelected(){

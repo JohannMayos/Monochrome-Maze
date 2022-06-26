@@ -4,79 +4,55 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private Rigidbody2D rig;
-    private Animator anim;
-    private bool colliding;
+   
 
     public float speed;
+    public float distance;
+    bool isRight = true;
+    private Rigidbody2D rig;
+    
 
-    public Transform rightCol;
-    public Transform leftCol;
-    public Transform headPoint;
+
+    public Transform groundCheck;
 
     public LayerMask layer;
 
     public BoxCollider2D boxCollider2D;
-    public CircleCollider2D circleCollider2D;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
         rig = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
     }
+    
 
     // Update is called once per frame
     void Update()
     {
-        rig.velocity = new Vector2(speed, rig.velocity.y);
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        RaycastHit2D ground = Physics2D.Raycast(groundCheck.position, Vector2.down, distance);
 
-        colliding = Physics2D.Linecast(rightCol.position, leftCol.position, layer);
 
-        if(colliding)
-        {
-            transform.localScale = new Vector2(transform.localScale.x * -1f, transform.localScale.y);
-            speed *= -1f;
-        }
-    }
-    bool playerDestroyer = false;
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if(col.gameObject.tag == "Player")
-        {
-            float height = col.transform.position.y - headPoint.position.y;
-
-            if(height > 0 && !playerDestroyer)
-            {
-                col.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 10, ForceMode2D.Impulse);
-                speed = 0;
-                anim.SetTrigger("die");
-                boxCollider2D.enabled = false;
-                circleCollider2D.enabled = false;
-                rig.bodyType = RigidbodyType2D.Kinematic;
-                Destroy(gameObject, 0.33f);
-
+        if(ground.collider == false){
+            if(isRight == true){
+                transform.eulerAngles = new Vector3 (0f, 0f, 0f);
+                isRight = false;
             }
-            else
-            {   
-                playerDestroyer = true;
-                
-                Destroy(col.gameObject);
+            else{
+                transform.eulerAngles = new Vector3 (0f, 180f, 0f);
+                isRight = true;
             }
         }
     }
 
-     void OnTriggerEnter2D(Collider2D col)
-    {
-        if(col.gameObject.tag == "Bullet")
-        {
-        
-           
-            Destroy(col.gameObject);
+
+    private void OnTriggerEnter2D(Collider2D col){
+        if(col.gameObject.tag == "Weapon"){
+            speed = 0;
+            boxCollider2D.enabled = false;
+            rig.bodyType = RigidbodyType2D.Kinematic;
             Destroy(this.gameObject);
-            
         }
+
     }
+
+    
 }
