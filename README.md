@@ -1,6 +1,7 @@
 # Monochrome Maze
 
 ![image](https://user-images.githubusercontent.com/42842871/175838775-e323aca5-72b6-4cc6-b908-9adde3c444f5.png)
+![image](https://user-images.githubusercontent.com/42842871/175838813-e3125c4f-541e-47fe-bc5a-30fec8a79581.png)
 
 # Developed By:/Desenvolvido Por:
 - Johann Mayos Lopes da Silva
