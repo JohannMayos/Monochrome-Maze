@@ -11,6 +11,9 @@ public class Boss : MonoBehaviour
     public int currentHealth;
     public HealthBar healthbar;
     private bool flipX = false;
+    public Vector3 attackOffset;
+    public LayerMask attackMask;
+    public float attackRange = 1f;
     
 
     void Start(){
@@ -38,6 +41,17 @@ public class Boss : MonoBehaviour
         }
     }
 
+    public void Attack(){
+        Vector3 pos = transform.position;
+        pos+= transform.right * attackOffset.x;
+        pos+= transform.up * attackOffset.y;
+
+        Collider2D colInfo = Physics2D.OverlapCircle(pos, attackRange, attackMask);
+
+        if(colInfo != null){
+            colInfo.GetComponent<Player>().TakeDamage(100);
+        }
+    }
 
     public void FlipBullet(){
 
@@ -61,7 +75,7 @@ public class Boss : MonoBehaviour
 
     void Die(){
         anim.SetTrigger("Die");
-        Destroy(gameObject, 1f);
+        Destroy(gameObject, 0.9f);
         GameController.instance.ShowVictory();
     }
 
