@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour
     public GameObject victory;
     public GameObject Boss;
     public GameObject HealthBarBoss;
+    public GameObject Overworld;
+    public GameObject BossTheme;
 
     public static GameController instance;
 
@@ -29,6 +31,8 @@ public class GameController : MonoBehaviour
     public void StartBoss(){
         Boss.SetActive(true);
         HealthBarBoss.SetActive(true);
+        Overworld.SetActive(false);
+        BossTheme.SetActive(true);
     }
 
     public void ShowVictory()
