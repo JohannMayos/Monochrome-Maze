@@ -2,6 +2,8 @@
 
 ![image](https://user-images.githubusercontent.com/42842871/175838775-e323aca5-72b6-4cc6-b908-9adde3c444f5.png)
 ![image](https://user-images.githubusercontent.com/42842871/175838813-e3125c4f-541e-47fe-bc5a-30fec8a79581.png)
+![image](https://user-images.githubusercontent.com/42842871/175838911-8ad35bf5-b8e7-491f-8309-bece1f6b0039.png)
+
 
 # Developed By:/Desenvolvido Por:
 - Johann Mayos Lopes da Silva
@@ -17,6 +19,10 @@ Ajude Skull Knight a derrotar o cavaleiro Void em um jogo onde a Morte e a Vida 
 The game was developed in 2D Platform Style highly influenced by Megaman Series.
 
 O jogo foi desenvolvido no estilo Plataforma 2D, altamente influenciado pela Franquia Megaman.
+
+# Soundtrack/Trilha Sonora
+Main Theme/Overworld - Johann Mayos Lopes da Silva
+Boss Theme - Festival of Servants (Castlevania Symphony of The Night) - Michiru Yamane
 
 # Controls/Controles
 
