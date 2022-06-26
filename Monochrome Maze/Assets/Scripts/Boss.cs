@@ -63,7 +63,7 @@ public class Boss : MonoBehaviour
 
     }
 
-    void TakeDamage(int damage){
+    public void TakeDamage(int damage){
         currentHealth -= damage;
 
         healthbar.SetHealth(currentHealth);
@@ -75,7 +75,7 @@ public class Boss : MonoBehaviour
 
     void Die(){
         anim.SetTrigger("Die");
-        Destroy(gameObject, 0.9f);
+        Destroy(gameObject, 1f);
         GameController.instance.ShowVictory();
     }
 

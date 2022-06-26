@@ -42,8 +42,10 @@ public class Player : MonoBehaviour
         }
 
         if(col.gameObject.tag == "Enemy"){
-            TakeDamage(100);
+            anim.SetBool("Damage", true);
+            TakeDamage(50);
         }
+      
 
         if(col.gameObject.tag == "Traps"){
             TakeDamage(500);
@@ -63,18 +65,14 @@ public class Player : MonoBehaviour
             isJumping = true;
         }
 
+         if(collision.gameObject.tag == "Enemy"){
+            anim.SetBool("Damage", false);
+            TakeDamage(0);
+        }
+
     
     }
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if(col.gameObject.tag == "Enemy")
-        {
-            
-            TakeDamage(100);
-            
-        }
-    }
 
    public void TakeDamage(int damage){
         currentHealth -= damage;
@@ -82,13 +80,15 @@ public class Player : MonoBehaviour
         healthbar.SetHealth(currentHealth);
 
         if(currentHealth <= 0){
-            Die();
+            //Die();
         }
     }
 
     void Die(){
+        anim.SetTrigger("Die");
+        Destroy(gameObject, 1f);
         GameController.instance.ShowGameOver();
-        Destroy(gameObject);
+        
     }
 
 
@@ -141,6 +141,7 @@ public class Player : MonoBehaviour
 
             foreach (Collider2D enemy in hitEnemies)
             {
+                enemy.GetComponent<Boss>().TakeDamage(100);
                 Debug.Log("hit");
             }
         }
