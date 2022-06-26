@@ -7,7 +7,7 @@ public class Boss_run : StateMachineBehaviour
 
     Transform player;
     Rigidbody2D rb;
-    public float attackRange = 0.5f;
+    public float attackRange = 3f;
     public float speed = 2.5f;
     Boss boss;
     
@@ -25,7 +25,7 @@ public class Boss_run : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         boss.LookAtPlayer();
-        Vector2 target = new Vector2(player.position.x, player.position.y);
+        Vector2 target = new Vector2(player.position.x, rb.position.y);
         Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
         rb.MovePosition(newPos);
 

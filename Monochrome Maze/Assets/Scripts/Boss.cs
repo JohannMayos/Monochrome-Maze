@@ -10,11 +10,6 @@ public class Boss : MonoBehaviour
     public int maxHealth = 1000;
     public int currentHealth;
     public HealthBar healthbar;
-    public GameObject bulletProjectile;
-    
-    public Transform Gun;
-    private bool shot;
-    public float shotForce;
     private bool flipX = false;
     
 
@@ -27,9 +22,6 @@ public class Boss : MonoBehaviour
 
 
     public void LookAtPlayer(){
-
-        
-        shot = true;
 
         if(transform.position.x > player.position.x && !isFlipped){
            
@@ -46,14 +38,6 @@ public class Boss : MonoBehaviour
         }
     }
 
-    public void Shot(){
-        if(shot == true){
-            GameObject temp = Instantiate(bulletProjectile);
-            temp.transform.position = Gun.position;
-            temp.GetComponent<Rigidbody2D>().velocity = new Vector2(shotForce, 0f);
-            Destroy(temp.gameObject, 1f);
-        }
-    }
 
     public void FlipBullet(){
 
@@ -61,7 +45,7 @@ public class Boss : MonoBehaviour
         float x = transform.localScale.x;
         x *= -1;
         transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
-        shotForce *= -1;
+        
 
     }
 
@@ -77,7 +61,7 @@ public class Boss : MonoBehaviour
 
     void Die(){
         anim.SetTrigger("Die");
-        Destroy(gameObject, 0.9f);
+        Destroy(gameObject, 1f);
         GameController.instance.ShowVictory();
     }
 
