@@ -152,10 +152,13 @@ MonoBehaviour:
   JumpForce: 11.5
   isJumping: 0
   Weapon: {fileID: 2579848389096547924}
+  maxHealth: 500
+  currentHealth: 0
+  healthbar: {fileID: 0}
   attackRange: 0.5
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!95 &2579848388917420300
 Animator:
   serializedVersion: 4

@@ -14,6 +14,7 @@ public class Boss : MonoBehaviour
     public Vector3 attackOffset;
     public LayerMask attackMask;
     public float attackRange = 1f;
+    public Transform Sword;
     
 
     void Start(){
@@ -42,15 +43,21 @@ public class Boss : MonoBehaviour
     }
 
     public void Attack(){
-        Vector3 pos = transform.position;
-        pos+= transform.right * attackOffset.x;
-        pos+= transform.up * attackOffset.y;
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(Sword.position, attackRange, attackMask);
 
-        Collider2D colInfo = Physics2D.OverlapCircle(pos, attackRange, attackMask);
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponent<Player>().TakeDamage(50);
+                
+            }
+    }
 
-        if(colInfo != null){
-            colInfo.GetComponent<Player>().TakeDamage(100);
+    void OnDrawGizmosSelected(){
+        if(Sword == null){
+            return;
         }
+
+        Gizmos.DrawWireSphere(Sword.position, attackRange);
     }
 
     public void FlipBullet(){
@@ -79,19 +86,5 @@ public class Boss : MonoBehaviour
         GameController.instance.ShowVictory();
     }
 
-     void OnTriggerEnter2D(Collider2D col)
-    {
-        if(col.gameObject.tag == "Bullet")
-        {
-        
-            anim.SetTrigger("Damage");
-            Destroy(col.gameObject);
-            TakeDamage(100);
-            
-            
-            
-        }
-
-    
-    }
+   
 }

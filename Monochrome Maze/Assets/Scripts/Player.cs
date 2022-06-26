@@ -15,12 +15,29 @@ public class Player : MonoBehaviour
     public HealthBar healthbar;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
+    public static Player player;
+    public SpriteRenderer sprite;
     
+    private void Awake(){
+        
+        if(player == null){
+            player = this;
+        }
+
+        else{
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(gameObject); 
+
+    }
    
     void Start(){
-
+        currentHealth = maxHealth;
         anim = GetComponent<Animator>();
         rig = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
+        
     }
     
 
@@ -41,21 +58,11 @@ public class Player : MonoBehaviour
             
         }
 
-        if(col.gameObject.tag == "Enemy"){
-            anim.SetBool("Damage", true);
-            TakeDamage(50);
-        }
-      
-
         if(col.gameObject.tag == "Traps"){
             TakeDamage(500);
             GameController.instance.ShowGameOver();
             Destroy(gameObject);
         }
-
-        
-
-
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -64,25 +71,36 @@ public class Player : MonoBehaviour
         {
             isJumping = true;
         }
-
-         if(collision.gameObject.tag == "Enemy"){
-            anim.SetBool("Damage", false);
-            TakeDamage(0);
-        }
-
     
     }
 
 
+    public IEnumerator DamagePlayer(){
+        anim.SetBool("Damage", true);
+        yield return new WaitForSeconds(0.2f);
+        anim.SetBool("Damage", false);
+
+        for(int i = 0; i < 7; i++){
+            sprite.enabled = false;
+            yield return new WaitForSeconds(0.15f);
+            sprite.enabled = true;
+            yield return new WaitForSeconds(0.15f);
+        }
+
+        BodyTrigger.body.enabled = true;
+    }
+
+    
    public void TakeDamage(int damage){
         currentHealth -= damage;
 
         healthbar.SetHealth(currentHealth);
 
         if(currentHealth <= 0){
-            //Die();
+            Die();
         }
     }
+
 
     void Die(){
         anim.SetTrigger("Die");
@@ -90,8 +108,6 @@ public class Player : MonoBehaviour
         GameController.instance.ShowGameOver();
         
     }
-
-
 
 
     void Move(){
@@ -118,17 +134,12 @@ public class Player : MonoBehaviour
         
     }
 
-   void Jump()
-    {
+    void Jump(){
+    
         if (Input.GetButtonDown("Jump") && !isJumping)
         {
-
-                rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
-               
-           
+            rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
         }
-
-
     }
 
 
@@ -137,13 +148,25 @@ public class Player : MonoBehaviour
         if(Input.GetButtonDown("Fire1")){
             anim.SetTrigger("Attack");
 
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(Weapon.position, attackRange, enemyLayers);
+            
+        }
+    }
+
+    void Damage(){
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(Weapon.position, attackRange, enemyLayers);
 
             foreach (Collider2D enemy in hitEnemies)
             {
                 enemy.GetComponent<Boss>().TakeDamage(100);
-                Debug.Log("hit");
+                
             }
+    }
+
+    void OnDrawGizmosSelected(){
+        if(Weapon == null){
+            return;
         }
+
+        Gizmos.DrawWireSphere(Weapon.position, attackRange);
     }
 }

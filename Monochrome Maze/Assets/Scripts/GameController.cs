@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     public GameObject gameOver;
     public GameObject victory;
     public GameObject Boss;
+    public GameObject HealthBarBoss;
 
     public static GameController instance;
 
@@ -27,6 +28,7 @@ public class GameController : MonoBehaviour
 
     public void StartBoss(){
         Boss.SetActive(true);
+        HealthBarBoss.SetActive(true);
     }
 
     public void ShowVictory()
