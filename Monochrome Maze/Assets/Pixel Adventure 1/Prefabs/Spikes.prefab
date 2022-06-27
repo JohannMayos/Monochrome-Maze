@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6916260036613749972}
   - component: {fileID: 6916260036613749974}
-  - component: {fileID: 6916260036613749975}
-  m_Layer: 0
+  - component: {fileID: 7679982864789394861}
+  m_Layer: 8
   m_Name: Spikes
-  m_TagString: Spike
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6916260036613749973}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.3, y: -0.77, z: -0.20668738}
   m_LocalScale: {x: 5.776664, y: 5.776664, z: 5.776664}
   m_ConstrainProportionsScale: 0
@@ -85,8 +85,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6916260036613749975
-BoxCollider2D:
+--- !u!60 &7679982864789394861
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -98,7 +98,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.03}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -108,6 +108,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.06}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.0036215517, y: -0.07934262}
+      - {x: -0.043765135, y: 0.0006476855}
+      - {x: -0.044678494, y: -0.0016890783}
+      - {x: -0.06337811, y: -0.04020082}
+      - {x: -0.08, y: -0.08}
+      - {x: 0.074804254, y: -0.08}
+      - {x: 0.05091007, y: -0.03}
+      - {x: 0.034416698, y: -0.003509922}

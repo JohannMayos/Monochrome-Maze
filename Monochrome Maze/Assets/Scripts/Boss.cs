@@ -15,6 +15,10 @@ public class Boss : MonoBehaviour
     public LayerMask attackMask;
     public float attackRange = 1f;
     public Transform Sword;
+    private Rigidbody2D rig;
+    public BoxCollider2D boxCollider2D;
+
+
     
 
     void Start(){
@@ -22,6 +26,8 @@ public class Boss : MonoBehaviour
         anim = GetComponent<Animator>();
         currentHealth = maxHealth;
         healthbar.SetMaxHealth(maxHealth);
+        rig = GetComponent<Rigidbody2D>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
 
@@ -72,7 +78,8 @@ public class Boss : MonoBehaviour
 
     public void TakeDamage(int damage){
         currentHealth -= damage;
-
+        
+        StartCoroutine(DamageBoss());
         healthbar.SetHealth(currentHealth);
 
         if(currentHealth <= 0){
@@ -80,10 +87,29 @@ public class Boss : MonoBehaviour
         }
     }
 
-    void Die(){
-        anim.SetTrigger("Die");
-        Destroy(gameObject, 1f);
+    public IEnumerator DamageBoss(){
+        anim.SetBool("Hit", true);
+        yield return new WaitForSeconds(1f);
+        anim.SetBool("Hit", false);
+      
+    }
+
+     public IEnumerator DeathAnim(){
+        anim.SetBool("Die", true);
+        yield return new WaitForSeconds(1f);
+        anim.SetBool("Die", false);
+        boxCollider2D.enabled = false;
+        rig.bodyType = RigidbodyType2D.Kinematic;
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
         GameController.instance.ShowVictory();
+    }
+
+
+    void Die(){
+        
+        StartCoroutine(DeathAnim());
+        
     }
 
    
