@@ -17283,6 +17283,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 489202041898547444, guid: c54d77e6b7e679747817c9e9ab9d0958, type: 3}
+      propertyPath: speed
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 489202041898547446, guid: c54d77e6b7e679747817c9e9ab9d0958, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -19263,7 +19267,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190697310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.95, y: 8.8, z: 0}
+  m_LocalPosition: {x: 21.93, y: 9.2, z: 0}
   m_LocalScale: {x: 1.9195313, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24430,7 +24434,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.775281, y: 1}
+    m_SensorSize: {x: 1.7763158, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 1
@@ -24794,7 +24798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6916260036613749972, guid: cede225d8b50923488285a486ee703a5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.36
+      value: 12.9
       objectReference: {fileID: 0}
     - target: {fileID: 6916260036613749972, guid: cede225d8b50923488285a486ee703a5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -25402,7 +25406,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.2541523}
+  m_Offset: {x: -0.06629467, y: -0.2541523}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -25413,7 +25417,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5083046}
+  m_Size: {x: 0.5874996, y: 1.5083046}
   m_EdgeRadius: 0
 --- !u!114 &2040567285
 MonoBehaviour:
@@ -26059,7 +26063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2579848388917420303, guid: f9677c28efc15b64abce15f2508b0765, type: 3}
       propertyPath: m_Size.x
-      value: 0.69854546
+      value: 0.5806885
       objectReference: {fileID: 0}
     - target: {fileID: 2579848388917420303, guid: f9677c28efc15b64abce15f2508b0765, type: 3}
       propertyPath: m_Size.y
@@ -26067,7 +26071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2579848388917420303, guid: f9677c28efc15b64abce15f2508b0765, type: 3}
       propertyPath: m_Offset.x
-      value: -0.21296072
+      value: -0.2718892
       objectReference: {fileID: 0}
     - target: {fileID: 2579848388917420303, guid: f9677c28efc15b64abce15f2508b0765, type: 3}
       propertyPath: m_Offset.y
