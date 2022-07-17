@@ -10,7 +10,7 @@
 
 # About The Game/Sobre o Jogo
 After being betrayed by his best friend and cursed to be an undead stuck in a maze, Skull Knight seeks revenge against the NightBorne Knight Void, this same knight who got an unprecendented power due to the curse which has been launched in Skull Knight, now Void seeks the immortality.
-Help Skull Knight to defeat the Knight Void in a game where the Death and the Life have the spotlights, higlighting the duality between heroism and villainy.
+Help Skull Knight to defeat the Knight Void in a game where the Death and the Life have the spotlights, highlighting the duality between heroism and villainy.
 
 Após ser traído por seu melhor amigo e amaldiçoado a ser um morto vivo preso em um labirinto, Skull Knight busca sua vingança contra o cavaleiro nascido da noite Void, que após obter um poder sem precedentes devido à maldição lançada em Skull Knight, agora busca a imortalidade.
 Ajude Skull Knight a derrotar o cavaleiro Void em um jogo onde a Morte e a Vida entram em cena destacando a dualidade entre o heroísmo e a vilania.
